@@ -19,14 +19,16 @@ class Planet(pygame.sprite.Sprite):
         self.angle = 0
         self.radius_orbit = 20
 
-    def update(self):
-        # pygame.time.delay(100)
-        self.angle += 0.1
-        if self.angle >= 360:
-            self.angle = 0
-        x = self.radius_orbit * math.cos(self.angle)
-        y = self.radius_orbit * math.sin(self.angle)
-        self.rect.move_ip(x, y)
+    def draw(self, surface, time_cnt):
+        a = 500
+        b = 200
+        if time_cnt % 300 == 0:
+            self.angle += 1
+            if self.angle >= 360:
+                self.angle = 0
+            self.x = a * math.cos(self.angle) + 500
+            self.y = b * math.sin(self.angle) + 200
+            surface.blit(self.image, (self.x, self.y))
 
 
 # Создаем игру и окно
@@ -54,26 +56,27 @@ all_sprites = pygame.sprite.Group()
 
 earth = Planet(pc1)
 # merkury = Planet(pc2)
-all_sprites.add(earth)
+# all_sprites.add(earth)
 # all_sprites.add(merkury)
 
 # Цикл игры
-running = True
-while running:
-    # Держим цикл на правильной скорости
-    clock.tick(FPS)
+main_loop = True
+while main_loop:
+    start_time = pygame.time.get_ticks()
     # Ввод процесса (события)
     for event in pygame.event.get():
         # check for closing window
         if event.type == pygame.QUIT:
-            running = False
-
+            main_loop = False
     # Обновление
-    all_sprites.update()
+    # all_sprites.update(start_time)
     screen.blit(bg, (0, 0))
+    earth.draw(screen, start_time)
     # Рендеринг
-    all_sprites.draw(screen)
+    # all_sprites.draw(screen)
     # После отрисовки всего, переворачиваем экран
     pygame.display.flip()
 
+    # Держим цикл на правильной скорости
+    clock.tick(FPS)
 pygame.quit()
