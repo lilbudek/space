@@ -9,17 +9,17 @@ G = 6.67e-11
 M = 5.97e24
 R = 6371
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 
 class Planet(pygame.sprite.Sprite):
     """тест"""
-    def __init__(self, picture, velosity, start_angle, a, b):
+    def __init__(self, picture, velocity, start_angle, a, b):
         pygame.sprite.Sprite.__init__(self)
-        self.speed = velosity
+        self.speed = velocity
         self.image = picture
         self.rect = self.image.get_rect()
         self.image.set_colorkey(BLACK)
-        # self.rect.center = (0, 0)
         self.angle = start_angle
         self.a = a
         self.b = b
@@ -58,14 +58,14 @@ clock = pygame.time.Clock()
 # объединяем все картинки в единую группу
 all_sprites = pygame.sprite.Group()
 sun.set_colorkey(BLACK)
-merkury = Planet(im1, 0.025, 90, 500, 300)
-# venus = Planet(im2, 640, 480, 0)
-earth = Planet(im3, 0.0025, 0, 600, 350)
-# mars = Planet(im4, 420, 160, 0)
+merkury = Planet(im1, 0.025, 270, 121, 120)
+venus = Planet(im2, 0.0025, 30, 250, 120)
+earth = Planet(im3, 0.00025, 0, 300, 150)
+mars = Planet(im4, 0.00025, 180, 400, 200)
 all_sprites.add(merkury)
-# all_sprites.add(venus)
+all_sprites.add(venus)
 all_sprites.add(earth)
-# all_sprites.add(mars)
+all_sprites.add(mars)
 
 # Цикл игры
 
@@ -82,7 +82,7 @@ while main_loop:
     # Рендеринг
 
     screen.blit(bg, (0, 0))
-    screen.blit(sun, (WIDTH / 2 - 110, HEIGHT / 2 - 110))
+    screen.blit(sun, (WIDTH / 2 - 100, HEIGHT / 2 - 100))
     all_sprites.draw(screen)
     # После отрисовки всего, переворачиваем экран
     pygame.display.flip()
