@@ -12,6 +12,7 @@ BLACK = (0, 0, 0)
 
 
 class Planet(pygame.sprite.Sprite):
+    """тест"""
     def __init__(self, picture, velosity, start_angle, a, b):
         pygame.sprite.Sprite.__init__(self)
         self.speed = velosity
