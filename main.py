@@ -5,30 +5,30 @@ import math
 # некоторые константы
 WIDTH = 1280
 HEIGHT = 720
-FPS = 60
+G = 6.67e-11
+M = 5.97e24
+R = 6371
 BLACK = (0, 0, 0)
 
 
 class Planet(pygame.sprite.Sprite):
-    def __init__(self, picture):
+    def __init__(self, picture, velosity, start_angle, a, b):
         pygame.sprite.Sprite.__init__(self)
+        self.speed = velosity
         self.image = picture
         self.rect = self.image.get_rect()
         self.image.set_colorkey(BLACK)
-        self.rect.center = (640, 160)
-        self.angle = 0
-        self.radius_orbit = 20
+        # self.rect.center = (0, 0)
+        self.angle = start_angle
+        self.a = a
+        self.b = b
 
-    def draw(self, surface, time_cnt):
-        a = 500
-        b = 200
-        if time_cnt % 300 == 0:
-            self.angle += 1
-            if self.angle >= 360:
-                self.angle = 0
-            self.x = a * math.cos(self.angle) + 500
-            self.y = b * math.sin(self.angle) + 200
-            surface.blit(self.image, (self.x, self.y))
+    def update(self):
+        self.angle += self.speed
+        if self.angle >= 360:
+            self.angle = 0
+        self.rect.x = self.a * math.cos(self.angle) + WIDTH / 2
+        self.rect.y = self.b * math.sin(self.angle) + HEIGHT / 2
 
 
 # Создаем игру и окно
@@ -44,8 +44,11 @@ pygame.display.set_caption("My Game")
 
 game_folder = os.path.dirname(__file__)
 sprite_folder = os.path.join(game_folder, 'resources')
-pc1 = pygame.image.load(os.path.join(sprite_folder, 'test.png')).convert()
-pc2 = pygame.image.load(os.path.join(sprite_folder, 'test2.png')).convert()
+sun = pygame.image.load(os.path.join(sprite_folder, '0.png')).convert()
+im1 = pygame.image.load(os.path.join(sprite_folder, '1.png')).convert()
+im2 = pygame.image.load(os.path.join(sprite_folder, '2.png')).convert()
+im3 = pygame.image.load(os.path.join(sprite_folder, '3.png')).convert()
+im4 = pygame.image.load(os.path.join(sprite_folder, '4.png')).convert()
 bg = pygame.image.load(os.path.join(sprite_folder, 'bg.jpg')).convert()
 
 # нужно чтобы время на 1 один прогон цикла было постоянным
@@ -53,30 +56,33 @@ clock = pygame.time.Clock()
 
 # объединяем все картинки в единую группу
 all_sprites = pygame.sprite.Group()
-
-earth = Planet(pc1)
-# merkury = Planet(pc2)
-# all_sprites.add(earth)
-# all_sprites.add(merkury)
+sun.set_colorkey(BLACK)
+merkury = Planet(im1, 0.025, 90, 500, 300)
+# venus = Planet(im2, 640, 480, 0)
+earth = Planet(im3, 0.0025, 0, 600, 350)
+# mars = Planet(im4, 420, 160, 0)
+all_sprites.add(merkury)
+# all_sprites.add(venus)
+all_sprites.add(earth)
+# all_sprites.add(mars)
 
 # Цикл игры
+
 main_loop = True
 while main_loop:
-    start_time = pygame.time.get_ticks()
+    clock.tick(60)
     # Ввод процесса (события)
     for event in pygame.event.get():
         # check for closing window
         if event.type == pygame.QUIT:
             main_loop = False
     # Обновление
-    # all_sprites.update(start_time)
-    screen.blit(bg, (0, 0))
-    earth.draw(screen, start_time)
+    all_sprites.update()
     # Рендеринг
-    # all_sprites.draw(screen)
+
+    screen.blit(bg, (0, 0))
+    screen.blit(sun, (WIDTH / 2 - 110, HEIGHT / 2 - 110))
+    all_sprites.draw(screen)
     # После отрисовки всего, переворачиваем экран
     pygame.display.flip()
-
-    # Держим цикл на правильной скорости
-    clock.tick(FPS)
 pygame.quit()
