@@ -3,18 +3,13 @@ import os
 import math
 
 # некоторые константы
-WIDTH = 1152
-HEIGHT = 864
-G = 6.67e-11
-M = 5.97e24
-R = 6371
+WIDTH = 1200
+HEIGHT = 900
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
 
 
 class Planet(pygame.sprite.Sprite):
-    """тест"""
-
+    """Базовый класс всех планет"""
     def __init__(self, picture, velocity, start_angle, a, b):
         pygame.sprite.Sprite.__init__(self)
         self.speed = velocity
@@ -30,24 +25,17 @@ class Planet(pygame.sprite.Sprite):
         self.angle += self.speed
         if self.angle >= 360:
             self.angle = 0
-        self.rect.x = self.a * math.cos(self.angle) + WIDTH // 2 - 10
-        self.rect.y = self.a * math.sin(self.angle) + HEIGHT // 2 - 10
+        self.rect.centerx = self.a * math.cos(self.angle) + WIDTH / 2
+        self.rect.centery = self.b * math.sin(self.angle) + HEIGHT / 2
 
 
 # Создаем игру и окно
 pygame.init()
-
-# нужно чтобы был звук, не знаю пока понадобится ли
-pygame.mixer.init()
-
-# самая нужная вещь - вертикальная синхронизация
-flags = pygame.SCALED
-screen = pygame.display.set_mode((WIDTH, HEIGHT), flags, vsync=1)
-pygame.display.set_caption("My Game")
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("СПАЙС")
 
 game_folder = os.path.dirname(__file__)
 sprite_folder = os.path.join(game_folder, 'resources')
-sun = pygame.image.load(os.path.join(sprite_folder, '0.png')).convert()
 im1 = pygame.image.load(os.path.join(sprite_folder, '1.png')).convert()
 im2 = pygame.image.load(os.path.join(sprite_folder, '2.png')).convert()
 im3 = pygame.image.load(os.path.join(sprite_folder, '3.png')).convert()
@@ -63,8 +51,15 @@ clock = pygame.time.Clock()
 
 # объединяем все картинки в единую группу
 all_sprites = pygame.sprite.Group()
+
+# создание солнца в центре
+sun = pygame.image.load(os.path.join(sprite_folder, '0.png')).convert()
 sun.set_colorkey(BLACK)
-merkury = Planet(im1, 0.025, 270, 80, 90)
+sun_rect = sun.get_rect()
+sun_rect.center = (WIDTH/2, HEIGHT/2)
+
+# TODO: это все должно быть в циклах и списках
+merkury = Planet(im1, 0.025, 270, 120, 60)
 venus = Planet(im2, 0.025, 30, 120, 100)
 earth = Planet(im3, 0.0025, 0, 160, 110)
 mars = Planet(im4, 0.0255, 180, 200, 200)
@@ -84,26 +79,16 @@ all_sprites.add(neptune)
 # Цикл игры
 main_loop = True
 while main_loop:
-    clock.tick(60)
-    # Ввод процесса (события)
+    clock.tick(60) # фпсссс!!0)1))!0!)))!
     for event in pygame.event.get():
-        # check for closing window
+        # закрыть окно по нажатию на крестик
         if event.type == pygame.QUIT:
             main_loop = False
-    # Обновление
+
+    # Рендеринг нового кадра
     all_sprites.update()
-    # Рендеринг
-
-    # screen.blit(bg, (0, 0))
-    screen.fill(BLACK)
-    screen.blit(sun, (WIDTH // 2 - 100, HEIGHT // 2 - 100))
-
-    # debug
-    # pygame.draw.circle(screen, WHITE, (WIDTH // 2, HEIGHT // 2), 50)
-    # x, y = pygame.mouse.get_pos()
-    # print(x, y)
-
+    screen.blit(bg, (0, 0))
+    screen.blit(sun, sun_rect)
     all_sprites.draw(screen)
-    # После отрисовки всего, переворачиваем экран
     pygame.display.flip()
 pygame.quit()
