@@ -25,6 +25,7 @@ class Planet(pygame.sprite.Sprite):
         self.b = b
 
     def update(self):
+        # TODO: никак не пойму как это работает
         self.angle += self.speed
         if self.angle >= 360:
             self.angle = 0
