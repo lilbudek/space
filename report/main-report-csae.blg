@@ -1,0 +1,28 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[0] Config.pm:315> INFO - Logfile is 'main-report-csae.blg'
+[58] biber:330> INFO - === Вт дек 14, 2021, 18:57:06
+[70] Biber.pm:415> INFO - Reading 'main-report-csae.bcf'
+[142] Biber.pm:952> INFO - Found 3 citekeys in bib section 0
+[153] Biber.pm:4334> INFO - Processing section 0
+[161] Biber.pm:4523> INFO - Looking for bibtex format file 'graduate-students.bib' for section 0
+[161] bibtex.pm:1682> INFO - LaTeX decoding ...
+[164] bibtex.pm:1494> INFO - Found BibTeX data source 'graduate-students.bib'
+[187] Utils.pm:395> WARN - Unknown field 'volume' found in sorting template
+[187] Utils.pm:395> WARN - Unknown field 'book' found in sorting template
+[187] Utils.pm:395> WARN - Unknown field 'part' found in sorting template
+[187] Utils.pm:395> WARN - Unknown field 'issue' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'volume' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'book' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'part' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'issue' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'volume' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'book' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'part' found in sorting template
+[188] Utils.pm:395> WARN - Unknown field 'issue' found in sorting template
+[193] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[193] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[193] Biber.pm:4162> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'ru-RU'
+[193] Biber.pm:4168> INFO - No sort tailoring available for locale 'ru-RU'
+[198] bbl.pm:651> INFO - Writing 'main-report-csae.bbl' with encoding 'UTF-8'
+[199] bbl.pm:754> INFO - Output to main-report-csae.bbl
+[199] Biber.pm:128> INFO - WARNINGS: 12

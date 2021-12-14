@@ -1,0 +1,73 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{Pygame}{misc}{}
+      \field{sortinit}{Э}
+      \field{sortinithash}{6a0769a634dcb9e9d23c70d5e20a0dde}
+      \field{labeltitlesource}{title}
+      \field{title}{[Электронный ресурс] Pygame}
+      \field{urlday}{11}
+      \field{urlmonth}{10}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pygame.org/wiki/about
+      \endverb
+      \verb{url}
+      \verb https://www.pygame.org/wiki/about
+      \endverb
+    \endentry
+    \entry{Pycharm}{misc}{}
+      \field{sortinit}{Э}
+      \field{sortinithash}{6a0769a634dcb9e9d23c70d5e20a0dde}
+      \field{labeltitlesource}{title}
+      \field{title}{[Электронный ресурс] Pyzcharm}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jetbrains.com/ru-ru/pycharm/
+      \endverb
+      \verb{url}
+      \verb https://www.jetbrains.com/ru-ru/pycharm/
+      \endverb
+    \endentry
+    \entry{Tkinter}{misc}{}
+      \field{sortinit}{Э}
+      \field{sortinithash}{6a0769a634dcb9e9d23c70d5e20a0dde}
+      \field{labeltitlesource}{title}
+      \field{title}{[Электронный ресурс] Tkinter}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/tkinter.html
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/tkinter.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

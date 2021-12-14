@@ -1,0 +1,24 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\selectlanguage *{russian}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Введение}{4}{chapter*.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Глава 1. Инструменты}{5}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Раздел 1. Библиотеки}{5}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Раздел 2. Среда разработки}{5}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Глава 2. Ход работы}{6}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Раздел 1. Разработка}{6}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Раздел 2. Работа программы}{6}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Заключение}{8}{chapter*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Список использованной литературы}{9}{chapter*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Приложение}{10}{chapter*.8}%
+\contentsfinish 
