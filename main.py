@@ -1,23 +1,40 @@
-import pygame
-import os
 import math
+import os
+from tkinter import *
+from PIL import ImageTk, Image
+import pygame
+import info
 
-# некоторые константы
-WIDTH = 1200
-HEIGHT = 900
+# some constant
+WIDTH = 1280
+HEIGHT = 960
 BLACK = (0, 0, 0)
 game_folder = os.path.dirname(__file__)
-sprite_folder = os.path.join(game_folder, 'resources')
+sprite_folder = os.path.join(game_folder, "resources")
+
+
+def info_win(number):
+    tkwin = Tk()
+    tkwin.geometry("810x600+300+300")
+    tkwin.resizable(False, False)
+    tkwin.title("About Planet")
+    img = ImageTk.PhotoImage(Image.open(os.path.join(sprite_folder, str(number) + "_.jpg")))
+    picture = Label(tkwin, image=img)
+    text = Label(tkwin, text=info.planet_info[number], fg="black", font="none 14 ", anchor=CENTER)
+    text.pack()
+    picture.pack()
+    tkwin.mainloop()
 
 
 class Planet(pygame.sprite.Sprite):
-    """Базовый класс всех планет"""
+    """Base class of all planets"""
 
     def __init__(self, number, velocity, start_pos, a, b):
         pygame.sprite.Sprite.__init__(self)
         self.number = number
         self.speed = velocity
-        self.image = pygame.image.load(os.path.join(sprite_folder, str(number) + '.png')).convert()
+        self.image = pygame.image.load(
+            os.path.join(sprite_folder, str(number) + ".png")).convert()
         self.rect = self.image.get_rect()
         self.image.set_colorkey(BLACK)
         self.angle = start_pos
@@ -35,49 +52,56 @@ class Planet(pygame.sprite.Sprite):
         self.rect.centery = self.b * math.sin(self.angle) + HEIGHT / 2
 
 
-# Создаем игру и окно
+# Create win init application
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("СПАЙС")
+pygame.display.set_caption("Space")
 
-bg = pygame.image.load(os.path.join(sprite_folder, 'bg.jpg')).convert()
+bg = pygame.image.load(os.path.join(sprite_folder, "bg.jpg")).convert()
 
-# нужно чтобы время на 1 один прогон цикла было постоянным
+# hold one cycle time
 clock = pygame.time.Clock()
 
-# объединяем все картинки в единую группу
+# combine all the pictures into a single group
 all_sprites = pygame.sprite.Group()
 
-# создание солнца в центре
-sun = pygame.image.load(os.path.join(sprite_folder, '0.png')).convert()
+# make the sun
+sun = pygame.image.load(os.path.join(sprite_folder, "0.png")).convert()
 sun.set_colorkey(BLACK)
 sun_rect = sun.get_rect()
 sun_rect.center = (WIDTH / 2, HEIGHT / 2)
 
 planet = [
-    Planet(1, 0.0025, 270, 120, 60),
-    Planet(2, 0.0025, 30, 120, 100),
-    Planet(3, 0.0025, 0, 160, 110),
-    Planet(4, 0.0255, 180, 200, 200),
-    Planet(5, 0.0025, 5, 240, 110),
-    Planet(6, 0.0025, 320, 280, 110),
-    Planet(7, 0.0025, 124, 320, 110),
-    Planet(8, 0.0025, 90, 360, 110)
+    Planet(1, 0.00684, 235, 110, 65),
+    Planet(2, 0.00348, 346, 150, 95),
+    Planet(3, 0.00122, 56, 200, 130),
+    Planet(4, 0.00049, 98, 240, 170),
+    Planet(5, 0.0000758, 234, 310, 240),
+    Planet(6, 0.0000415, 43, 430, 320),
+    Planet(7, 0.0000256, 12, 520, 390),
+    Planet(8, 0.0000100, 0, 600, 500),
 ]
 
 for i in planet:
     all_sprites.add(i)
 
-# Цикл игры
+# Main game cycle
 main_loop = True
 while main_loop:
-    clock.tick(60)  # фпсссс!!0)1))!0!)))!
+    clock.tick(60)   # Fps!!0)1))!0!)))!
+
+    # check all invents
     for event in pygame.event.get():
-        # закрыть окно по нажатию на крестик
+        # close the window by clicking on the cross
         if event.type == pygame.QUIT:
             main_loop = False
+        # open information window when clicked on planet
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            for obj in planet:
+                if obj.rect.collidepoint(pygame.mouse.get_pos()):
+                    info_win(obj.number)
 
-    # Рендеринг нового кадра
+    # rendering new frame
     all_sprites.update()
     screen.blit(bg, (0, 0))
     screen.blit(sun, sun_rect)
