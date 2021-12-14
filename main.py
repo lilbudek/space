@@ -21,8 +21,10 @@ def info_win(number):
     tkwin.geometry("810x600+300+300")
     tkwin.resizable(False, False)
     tkwin.title("About Planet")
-    img = ImageTk.PhotoImage(Image.open(os.path.join(sprite_folder, str(number) + "_.jpg")))
-    picture = Label(tkwin, image=img)
+    img = Image.open(os.path.join(sprite_folder, str(number) + "_.jpg"))
+    resize_img = img.resize((450, 450))
+    small_img = ImageTk.PhotoImage(resize_img)
+    picture = Label(image=small_img)
     text = Label(tkwin, text=info.planet_info[number], fg="black", font="none 14 ", anchor=CENTER)
     text.pack()
     picture.pack()
@@ -39,7 +41,6 @@ class Planet(pygame.sprite.Sprite):
         rect - the described square
         angle - starting angle of the planet
     """
-
     def __init__(self, number, velocity, start_pos, a, b):
         """
         planet construction
@@ -99,6 +100,7 @@ planet = [
     Planet(8, 0.0000100, 0, 600, 500),
 ]
 
+# add all generated planet to sprite list
 for i in planet:
     all_sprites.add(i)
 
@@ -106,7 +108,6 @@ for i in planet:
 main_loop = True
 while main_loop:
     clock.tick(60)   # Fps!!0)1))!0!)))!
-
     # check all invents
     for event in pygame.event.get():
         # close the window by clicking on the cross
@@ -117,7 +118,6 @@ while main_loop:
             for obj in planet:
                 if obj.rect.collidepoint(pygame.mouse.get_pos()):
                     info_win(obj.number)
-
     # rendering new frame
     all_sprites.update()
     screen.blit(bg, (0, 0))
