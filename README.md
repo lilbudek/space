@@ -1,9 +1,6 @@
-# Space - v.0.1
----
+# Space - v.1.0
 ### Как установить
+    pip3 install pygame pillow
 
 ### Как запускать
-
-### Что оно делает
-
-### To-do list
+    python3 main.py
