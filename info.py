@@ -7,9 +7,7 @@ planet_info = {
     and its apparent distance from the Sun as viewed from Earth never exceeds 28°. 
     This proximity to the Sun means the planet can only be seen near the western horizon after sunset 
     or the eastern horizon before sunrise, usually in twilight. At this time, it may appear 
-    as a bright star-like object, but is more difficult to observe than Venus. 
-    From Earth, the planet telescopically displays the complete range of phases, 
-    similar to Venus and the Moon, which recurs over its synod period of approximately 116 days. """,
+    as a bright star-like object, but is more difficult to observe than Venus. """,
     2: """Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty.
     As the brightest natural object in Earth's night sky after the Moon, Venus can cast shadows 
     and can be visible to the naked eye in broad daylight. Venus lies within Earth's orbit, 
@@ -55,11 +53,7 @@ planet_info = {
     giants Jupiter and Saturn. For this reason, scientists often classify Uranus and Neptune as 
     "ice giants" to distinguish them from the other giant planets. Uranus's atmosphere is similar 
     to Jupiter's and Saturn's in its primary composition of hydrogen and helium, but it contains 
-    more "ices" such as water, ammonia, and methane, along with traces of other hydrocarbons. 
-    It has the coldest planetary atmosphere in the Solar System, with a minimum temperature 
-    of 49 K (−224 °C; −371 °F), and has a complex, layered cloud structure with water thought to
-    make up the lowest clouds and methane the uppermost layer of clouds. The interior of Uranus 
-    is mainly composed of ices and rock. """,
+    more "ices" such as water, ammonia, and methane, along with traces of other hydrocarbons.  """,
     8: """Neptune is the eighth and farthest-known Solar planet from the Sun. In the Solar System,
     it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest 
     giant planet. It is 17 times the mass of Earth, slightly more massive than its near-twin Uranus.
