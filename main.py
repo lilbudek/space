@@ -14,6 +14,9 @@ sprite_folder = os.path.join(game_folder, "resources")
 
 
 def info_win(number):
+    """
+    This module is responsible for information about the planets
+    """
     tkwin = Tk()
     tkwin.geometry("810x600+300+300")
     tkwin.resizable(False, False)
@@ -27,9 +30,20 @@ def info_win(number):
 
 
 class Planet(pygame.sprite.Sprite):
-    """Base class of all planets"""
+    """
+    Base class of all planets
+    args:
+        number - planet number
+        speed - planet speed
+        image - planet image
+        rect - the described square
+        angle - starting angle of the planet
+    """
 
     def __init__(self, number, velocity, start_pos, a, b):
+        """
+        planet construction
+        """
         pygame.sprite.Sprite.__init__(self)
         self.number = number
         self.speed = velocity
@@ -42,6 +56,9 @@ class Planet(pygame.sprite.Sprite):
         self.b = b
 
     def update(self):
+        """
+        planet moving
+        """
         if self.number == 2:
             self.angle += self.speed
         else:
